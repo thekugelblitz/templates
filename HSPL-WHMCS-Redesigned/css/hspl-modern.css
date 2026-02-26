@@ -1,0 +1,292 @@
+/* HSPL-WHMCS-Redesigned Custom Styling */
+
+/* 1. Base Variables - Light Mode */
+:root {
+  /* Colors - Brand */
+  --hspl-primary-500: #4f46e5;
+  /* Indigo */
+  --hspl-primary-600: #4338ca;
+  --hspl-primary-700: #3730a3;
+  --hspl-accent-500: #3b82f6;
+  /* Modern Blue */
+  --hspl-accent-600: #2563eb;
+
+  /* Colors - Status */
+  --hspl-success-500: #10b981;
+  /* Soft Green */
+  --hspl-warning-500: #f59e0b;
+  /* Amber */
+  --hspl-danger-500: #ef4444;
+  /* Refined Red */
+
+  /* Colors - Neutrals (Light Theme) */
+  --hspl-gray-50: #f9fafb;
+  --hspl-gray-100: #f3f4f6;
+  --hspl-gray-200: #e5e7eb;
+  --hspl-gray-300: #d1d5db;
+  --hspl-gray-400: #9ca3af;
+  --hspl-gray-500: #6b7280;
+  --hspl-gray-600: #4b5563;
+  --hspl-gray-700: #374151;
+  --hspl-gray-800: #1f2937;
+  --hspl-gray-900: #111827;
+
+  /* Backgrounds & Text */
+  --hspl-bg-main: #f9fafb;
+  --hspl-bg-surface: #ffffff;
+  --hspl-bg-surface-hover: #f3f4f6;
+  --hspl-text-primary: #111827;
+  --hspl-text-secondary: #4b5563;
+  --hspl-text-muted: #9ca3af;
+  --hspl-border-color: #e5e7eb;
+
+  /* Shadows */
+  --hspl-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --hspl-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --hspl-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+
+  /* Radius */
+  --hspl-radius-sm: 4px;
+  --hspl-radius-md: 8px;
+  --hspl-radius-lg: 12px;
+  --hspl-radius-xl: 16px;
+
+  /* Typography */
+  --hspl-font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* 2. Base Variables - Dark Mode */
+[data-theme="dark"] {
+  /* Colors - Neutrals (Dark Theme) */
+  --hspl-gray-50: #111827;
+  --hspl-gray-100: #1f2937;
+  --hspl-gray-200: #374151;
+  --hspl-gray-300: #4b5563;
+  --hspl-gray-400: #6b7280;
+  --hspl-gray-500: #9ca3af;
+  --hspl-gray-600: #d1d5db;
+  --hspl-gray-700: #e5e7eb;
+  --hspl-gray-800: #f3f4f6;
+  --hspl-gray-900: #f9fafb;
+
+  /* Backgrounds & Text */
+  --hspl-bg-main: #0b0f19;
+  /* Deep Navy Base */
+  --hspl-bg-surface: #111827;
+  /* Surface Level 1 */
+  --hspl-bg-surface-hover: #1f2937;
+  --hspl-text-primary: #f9fafb;
+  --hspl-text-secondary: #d1d5db;
+  --hspl-text-muted: #9ca3af;
+  --hspl-border-color: #374151;
+
+  /* Shadows for Dark Mode (Often subtler, or using borders) */
+  --hspl-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
+  --hspl-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+}
+
+/* 3. Global Reset & Body */
+body {
+  background-color: var(--hspl-bg-main);
+  color: var(--hspl-text-primary);
+  font-family: var(--hspl-font-family);
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+/* Base Overrides for WHMCS elements */
+#contentarea {
+  background-color: var(--hspl-bg-main);
+}
+
+.header,
+.navigation {
+  background-color: var(--hspl-bg-surface) !important;
+  border-bottom: 1px solid var(--hspl-border-color);
+}
+
+.sidebar {
+  background-color: var(--hspl-bg-surface) !important;
+  border-right: 1px solid var(--hspl-border-color);
+}
+
+/* Smooth toggling to prevent flashes */
+.dark-mode-transition * {
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease !important;
+}
+
+/* 4. Dashboard Panels (hspl-panel) */
+.hspl-panel {
+  background-color: var(--hspl-bg-surface);
+  border: 1px solid var(--hspl-border-color);
+  border-radius: var(--hspl-radius-lg);
+  box-shadow: var(--hspl-shadow-sm);
+  margin-bottom: 24px;
+  overflow: hidden;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.hspl-panel:hover {
+  box-shadow: var(--hspl-shadow-md);
+}
+
+.hspl-panel-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--hspl-border-color);
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+[data-theme="dark"] .hspl-panel-heading {
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+.hspl-panel-title {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--hspl-text-primary);
+}
+
+.hspl-widget-tools {
+  display: flex;
+  gap: 12px;
+}
+
+.hspl-widget-tools a {
+  color: var(--hspl-text-muted);
+  font-size: 1.1rem;
+  transition: color 0.2s ease;
+}
+
+.hspl-widget-tools a:hover {
+  color: var(--hspl-text-primary);
+}
+
+.hspl-panel-body {
+  padding: 20px;
+  color: var(--hspl-text-secondary);
+}
+
+/* Widget Specific Adjustments */
+.dashboard-panel-item {
+  margin-bottom: 0;
+  /* Let isotope handle vertical spacing, we give bottom margin inside */
+}
+
+/* Home Widgets Container Spacing */
+.home-widgets-container {
+  margin: -12px;
+}
+
+.home-widgets-container .dashboard-panel-item {
+  padding: 12px;
+}
+
+/* 5. Data Tables Customization */
+table.dataTable {
+  border-collapse: collapse !important;
+  width: 100% !important;
+  color: var(--hspl-text-secondary);
+  border-radius: var(--hspl-radius-md);
+  overflow: hidden;
+  border: 1px solid var(--hspl-border-color) !important;
+}
+
+table.dataTable thead th,
+table.dataTable thead td {
+  padding: 14px 16px;
+  border-bottom: 2px solid var(--hspl-border-color) !important;
+  background-color: var(--hspl-bg-surface-hover);
+  color: var(--hspl-text-primary);
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+table.dataTable tbody tr {
+  background-color: var(--hspl-bg-surface) !important;
+  border-bottom: 1px solid var(--hspl-border-color);
+  transition: background-color 0.15s ease;
+}
+
+table.dataTable tbody tr:hover {
+  background-color: var(--hspl-bg-surface-hover) !important;
+}
+
+table.dataTable tbody td {
+  padding: 14px 16px;
+  vertical-align: middle;
+}
+
+/* Pagination & Search Overrides */
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+  border-radius: var(--hspl-radius-sm) !important;
+  border: 1px solid var(--hspl-border-color) !important;
+  background: var(--hspl-bg-surface) !important;
+  color: var(--hspl-text-secondary) !important;
+  transition: all 0.2s;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.current,
+.dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+  background: var(--hspl-primary-500) !important;
+  color: #fff !important;
+  border-color: var(--hspl-primary-600) !important;
+}
+
+.dataTables_wrapper .dataTables_filter input {
+  border: 1px solid var(--hspl-border-color);
+  border-radius: var(--hspl-radius-xl);
+  padding: 6px 16px;
+  background-color: var(--hspl-bg-surface);
+  color: var(--hspl-text-primary);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.dataTables_wrapper .dataTables_filter input:focus {
+  outline: none;
+  border-color: var(--hspl-primary-500);
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+/* 6. Form Inputs & Buttons */
+.form-control {
+  border-radius: var(--hspl-radius-md);
+  border: 1px solid var(--hspl-border-color);
+  background-color: var(--hspl-bg-surface);
+  color: var(--hspl-text-primary);
+  box-shadow: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-control:focus {
+  border-color: var(--hspl-primary-500);
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+  background-color: var(--hspl-bg-surface);
+  color: var(--hspl-text-primary);
+}
+
+.btn {
+  border-radius: var(--hspl-radius-md);
+  font-weight: 500;
+  transition: all 0.2s ease;
+  letter-spacing: 0.02em;
+}
+
+.btn-primary {
+  background-color: var(--hspl-primary-500);
+  border-color: var(--hspl-primary-600);
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active {
+  background-color: var(--hspl-primary-600) !important;
+  border-color: var(--hspl-primary-700) !important;
+}
