@@ -1,181 +1,437 @@
-/* HSPL-WHMCS-Redesigned Custom Styling */
+/* HSPL-WHMCS-Redesigned Premium CSS Overhaul 
+   Brings a deep, modern SaaS aesthetic (Linear, Vercel, Stripe style)
+*/
 
-/* 1. Base Variables - Light Mode */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
 :root {
-  /* Colors - Brand */
-  --hspl-primary-500: #4f46e5;
-  /* Indigo */
-  --hspl-primary-600: #4338ca;
-  --hspl-primary-700: #3730a3;
-  --hspl-accent-500: #3b82f6;
-  /* Modern Blue */
-  --hspl-accent-600: #2563eb;
+  /* High-end Dark Theme by Default */
+  --bg-body: #09090b;
+  /* Zinc 950 Deep */
+  --bg-surface: #18181b;
+  /* Zinc 900 Surfaces */
+  --bg-surface-hover: #27272a;
+  /* Zinc 800 */
+  --border-color: #27272a;
+  /* Soft border */
+  --border-subtle: #18181b;
+  --text-primary: #f8fafc;
+  --text-muted: #a1a1aa;
+  /* Zinc 400 */
 
-  /* Colors - Status */
-  --hspl-success-500: #10b981;
-  /* Soft Green */
-  --hspl-warning-500: #f59e0b;
-  /* Amber */
-  --hspl-danger-500: #ef4444;
-  /* Refined Red */
+  --accent-primary: #3b82f6;
+  --accent-hover: #2563eb;
 
-  /* Colors - Neutrals (Light Theme) */
-  --hspl-gray-50: #f9fafb;
-  --hspl-gray-100: #f3f4f6;
-  --hspl-gray-200: #e5e7eb;
-  --hspl-gray-300: #d1d5db;
-  --hspl-gray-400: #9ca3af;
-  --hspl-gray-500: #6b7280;
-  --hspl-gray-600: #4b5563;
-  --hspl-gray-700: #374151;
-  --hspl-gray-800: #1f2937;
-  --hspl-gray-900: #111827;
+  /* Status */
+  --status-success: #10b981;
+  --status-warning: #f59e0b;
+  --status-danger: #ef4444;
+  --status-info: #3b82f6;
 
-  /* Backgrounds & Text */
-  --hspl-bg-main: #f9fafb;
-  --hspl-bg-surface: #ffffff;
-  --hspl-bg-surface-hover: #f3f4f6;
-  --hspl-text-primary: #111827;
-  --hspl-text-secondary: #4b5563;
-  --hspl-text-muted: #9ca3af;
-  --hspl-border-color: #e5e7eb;
+  --hspl-radius-sm: 6px;
+  --hspl-radius-md: 10px;
+  --hspl-radius-lg: 16px;
+  --hspl-radius-xl: 20px;
 
-  /* Shadows */
-  --hspl-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  --hspl-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  --hspl-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-
-  /* Radius */
-  --hspl-radius-sm: 4px;
-  --hspl-radius-md: 8px;
-  --hspl-radius-lg: 12px;
-  --hspl-radius-xl: 16px;
-
-  /* Typography */
-  --hspl-font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --hspl-font: 'Inter', -apple-system, sans-serif;
+  --shadow-panel: 0 4px 12px rgba(0, 0, 0, 0.5);
 }
 
-/* 2. Base Variables - Dark Mode */
-[data-theme="dark"] {
-  /* Colors - Neutrals (Dark Theme) */
-  --hspl-gray-50: #111827;
-  --hspl-gray-100: #1f2937;
-  --hspl-gray-200: #374151;
-  --hspl-gray-300: #4b5563;
-  --hspl-gray-400: #6b7280;
-  --hspl-gray-500: #9ca3af;
-  --hspl-gray-600: #d1d5db;
-  --hspl-gray-700: #e5e7eb;
-  --hspl-gray-800: #f3f4f6;
-  --hspl-gray-900: #f9fafb;
-
-  /* Backgrounds & Text */
-  --hspl-bg-main: #0b0f19;
-  /* Deep Navy Base */
-  --hspl-bg-surface: #111827;
-  /* Surface Level 1 */
-  --hspl-bg-surface-hover: #1f2937;
-  --hspl-text-primary: #f9fafb;
-  --hspl-text-secondary: #d1d5db;
-  --hspl-text-muted: #9ca3af;
-  --hspl-border-color: #374151;
-
-  /* Shadows for Dark Mode (Often subtler, or using borders) */
-  --hspl-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
-  --hspl-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+[data-theme="light"] {
+  --bg-body: #f8fafc;
+  --bg-surface: #ffffff;
+  --bg-surface-hover: #f1f5f9;
+  --border-color: #e2e8f0;
+  --text-primary: #0f172a;
+  --text-muted: #64748b;
+  --shadow-panel: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
-/* 3. Global Reset & Body */
-body {
-  background-color: var(--hspl-bg-main);
-  color: var(--hspl-text-primary);
-  font-family: var(--hspl-font-family);
-  transition: background-color 0.15s ease, color 0.15s ease;
-}
-
-/* Base Overrides for WHMCS elements */
+/* 1. Global Reset & Overrides */
+body,
 #contentarea {
-  background-color: var(--hspl-bg-main);
+  background-color: var(--bg-body) !important;
+  color: var(--text-primary) !important;
+  font-family: var(--hspl-font) !important;
+  transition: background-color 0.2s, color 0.2s;
+  letter-spacing: -0.01em;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--text-primary) !important;
+  font-family: var(--hspl-font) !important;
+  font-weight: 600 !important;
+}
+
+/* 2. Top Navigation & Sidebar (Ultra Clean) */
 .header,
 .navigation {
-  background-color: var(--hspl-bg-surface) !important;
-  border-bottom: 1px solid var(--hspl-border-color);
+  background-color: var(--bg-body) !important;
+  border-bottom: 1px solid var(--border-color) !important;
+  box-shadow: none !important;
 }
 
 .sidebar {
-  background-color: var(--hspl-bg-surface) !important;
-  border-right: 1px solid var(--hspl-border-color);
+  background-color: var(--bg-body) !important;
+  border-right: 1px solid var(--border-color) !important;
+  box-shadow: none !important;
 }
 
-/* Smooth toggling to prevent flashes */
-.dark-mode-transition * {
-  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease !important;
-}
-
-/* 4. Dashboard Panels (hspl-panel) */
-.hspl-panel {
-  background-color: var(--hspl-bg-surface);
-  border: 1px solid var(--hspl-border-color);
-  border-radius: var(--hspl-radius-lg);
-  box-shadow: var(--hspl-shadow-sm);
-  margin-bottom: 24px;
-  overflow: hidden;
-  transition: box-shadow 0.2s ease, transform 0.2s ease;
-}
-
-.hspl-panel:hover {
-  box-shadow: var(--hspl-shadow-md);
-}
-
-.hspl-panel-heading {
-  display: flex;
+/* 3. Aggressive Banner Overrides (The yellow warnings) */
+.alert.global-admin-warning,
+.alert-warning {
+  background-color: rgba(245, 158, 11, 0.1) !important;
+  border: 1px solid rgba(245, 158, 11, 0.3) !important;
+  color: var(--status-warning) !important;
+  border-radius: var(--hspl-radius-md) !important;
+  box-shadow: none !important;
+  font-weight: 500;
+  display: flex !important;
   align-items: center;
-  justify-content: space-between;
-  padding: 16px 20px;
-  border-bottom: 1px solid var(--hspl-border-color);
-  background-color: rgba(0, 0, 0, 0.02);
-}
-
-[data-theme="dark"] .hspl-panel-heading {
-  background-color: rgba(255, 255, 255, 0.02);
-}
-
-.hspl-panel-title {
-  margin: 0;
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: var(--hspl-text-primary);
-}
-
-.hspl-widget-tools {
-  display: flex;
   gap: 12px;
 }
 
-.hspl-widget-tools a {
-  color: var(--hspl-text-muted);
-  font-size: 1.1rem;
-  transition: color 0.2s ease;
+.alert-warning a {
+  color: #fcd34d !important;
+  font-weight: bold;
 }
 
-.hspl-widget-tools a:hover {
-  color: var(--hspl-text-primary);
+.alert-success {
+  background-color: rgba(16, 185, 129, 0.1) !important;
+  border: 1px solid rgba(16, 185, 129, 0.3) !important;
+  color: var(--status-success) !important;
 }
 
+.alert-danger {
+  background-color: rgba(239, 68, 68, 0.1) !important;
+  border: 1px solid rgba(239, 68, 68, 0.3) !important;
+  color: var(--status-danger) !important;
+}
+
+.alert-info {
+  background-color: rgba(59, 130, 246, 0.1) !important;
+  border: 1px solid rgba(59, 130, 246, 0.3) !important;
+  color: var(--status-info) !important;
+}
+
+/* 4. Dashboard Health/Summary Blocks (The chunky colored ones) */
+.health-status-block {
+  background: var(--bg-surface) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: var(--hspl-radius-lg) !important;
+  box-shadow: var(--shadow-panel) !important;
+  padding: 24px 20px !important;
+  margin-bottom: 24px !important;
+  display: flex !important;
+  flex-direction: column;
+  justify-content: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+  color: var(--text-primary) !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.health-status-block:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6) !important;
+  border-color: var(--text-muted) !important;
+}
+
+/* Colored top borders instead of full background fills */
+.health-status-block.stat-success {
+  border-top: 3px solid var(--status-success) !important;
+}
+
+.health-status-block.stat-danger {
+  border-top: 3px solid var(--status-danger) !important;
+}
+
+.health-status-block.stat-warning {
+  border-top: 3px solid var(--status-warning) !important;
+}
+
+.health-status-block.stat-info {
+  border-top: 3px solid var(--status-info) !important;
+}
+
+/* The numbers inside */
+.health-status-block .stat-value {
+  font-size: 32px !important;
+  font-weight: 700 !important;
+  color: var(--text-primary) !important;
+  margin-bottom: 8px !important;
+  line-height: 1 !important;
+}
+
+/* The label inside */
+.health-status-block .stat-title {
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  color: var(--text-muted) !important;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* 5. Panels & Widgets Overhaul */
+.panel,
+.panel-default,
+.hspl-panel {
+  background-color: var(--bg-surface) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: var(--hspl-radius-lg) !important;
+  box-shadow: var(--shadow-panel) !important;
+  margin-bottom: 24px !important;
+}
+
+.panel-heading,
+.hspl-panel-heading {
+  background-color: transparent !important;
+  border-bottom: 1px dashed var(--border-color) !important;
+  padding: 18px 24px !important;
+  color: var(--text-primary) !important;
+  font-weight: 600 !important;
+  font-size: 1.1rem !important;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.panel-title {
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+  color: var(--text-primary) !important;
+  margin: 0 !important;
+}
+
+.panel-body,
 .hspl-panel-body {
-  padding: 20px;
-  color: var(--hspl-text-secondary);
+  padding: 24px !important;
+  color: var(--text-muted) !important;
 }
 
-/* Widget Specific Adjustments */
-.dashboard-panel-item {
-  margin-bottom: 0;
-  /* Let isotope handle vertical spacing, we give bottom margin inside */
+/* Widget Tools Icons */
+.widget-tools a i {
+  color: var(--text-muted) !important;
+  transition: color 0.2s;
 }
 
-/* Home Widgets Container Spacing */
+.widget-tools a:hover i {
+  color: var(--text-primary) !important;
+}
+
+/* 6. Form Inputs & Buttons (Minimalist SaaS) */
+.form-control {
+  background-color: var(--bg-body) !important;
+  border: 1px solid var(--border-color) !important;
+  color: var(--text-primary) !important;
+  border-radius: var(--hspl-radius-md) !important;
+  padding: 10px 14px !important;
+  box-shadow: none !important;
+  transition: all 0.2s !important;
+}
+
+.form-control:focus {
+  border-color: var(--accent-primary) !important;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2) !important;
+}
+
+.btn {
+  border-radius: var(--hspl-radius-md) !important;
+  font-weight: 500 !important;
+  padding: 8px 16px !important;
+  transition: all 0.2s !important;
+  border: 1px solid transparent !important;
+}
+
+.btn-primary {
+  background-color: var(--accent-primary) !important;
+  color: #fff !important;
+}
+
+.btn-primary:hover {
+  background-color: var(--accent-hover) !important;
+}
+
+.btn-default {
+  background-color: var(--bg-surface) !important;
+  border-color: var(--border-color) !important;
+  color: var(--text-primary) !important;
+}
+
+.btn-default:hover {
+  background-color: var(--bg-surface-hover) !important;
+}
+
+/* 7. Tables Override */
+table.dataTable,
+.table {
+  border-collapse: separate !important;
+  border-spacing: 0 !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: var(--hspl-radius-md) !important;
+  width: 100% !important;
+  overflow: hidden !important;
+}
+
+table.dataTable thead th,
+.table thead th {
+  background-color: var(--bg-surface-hover) !important;
+  color: var(--text-primary) !important;
+  font-weight: 500 !important;
+  font-size: 0.85rem !important;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 14px 20px !important;
+  border-bottom: 1px solid var(--border-color) !important;
+  border-top: none !important;
+}
+
+/* 8. Sidebar & Top Navigation Overrides */
+.sidebar {
+  padding-top: 10px !important;
+}
+
+.sidebar .sidebar-header {
+  background-color: transparent !important;
+  color: var(--text-muted) !important;
+  font-size: 0.75rem !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  padding: 24px 20px 8px !important;
+  border: none !important;
+  font-weight: 700 !important;
+  box-shadow: none !important;
+  background-image: none !important;
+}
+
+.sidebar .sidebar-header i {
+  opacity: 0.5;
+  margin-right: 8px;
+  font-size: 0.9rem;
+}
+
+.sidebar ul.menu,
+.sidebar>ul {
+  margin: 0 !important;
+  padding: 0 12px 12px !important;
+}
+
+.sidebar ul.menu li a,
+.sidebar>ul li a {
+  color: var(--text-muted) !important;
+  padding: 8px 12px !important;
+  border-radius: var(--hspl-radius-md) !important;
+  transition: background-color 0.2s, color 0.2s !important;
+  display: block !important;
+  font-weight: 500 !important;
+  border: none !important;
+  background-image: none !important;
+}
+
+.sidebar ul.menu li a:hover,
+.sidebar>ul li a:hover {
+  background-color: var(--bg-surface-hover) !important;
+  color: var(--text-primary) !important;
+  text-decoration: none !important;
+}
+
+.sidebar .content-padded {
+  padding: 0 20px 12px !important;
+  color: var(--text-muted) !important;
+  line-height: 1.6;
+}
+
+/* Base Top Navigation */
+.navigation .navbar-new {
+  background-color: transparent !important;
+}
+
+.navigation .navbar-new>ul>li>a {
+  color: var(--text-muted) !important;
+  font-weight: 500 !important;
+  transition: color 0.2s !important;
+}
+
+.navigation .navbar-new>ul>li>a:hover {
+  color: var(--text-primary) !important;
+}
+
+/* Make Dropdown Menus Cleaner */
+.dropdown-menu {
+  background-color: var(--bg-surface) !important;
+  border: 1px solid var(--border-color) !important;
+  box-shadow: var(--shadow-panel) !important;
+  border-radius: var(--hspl-radius-md) !important;
+  padding: 8px !important;
+}
+
+.dropdown-menu>li>a {
+  color: var(--text-primary) !important;
+  padding: 10px 16px !important;
+  border-radius: var(--hspl-radius-sm) !important;
+  transition: background-color 0.15s, color 0.15s !important;
+}
+
+.dropdown-menu>li>a:hover {
+  background-color: var(--bg-surface-hover) !important;
+  color: var(--accent-primary) !important;
+}
+
+table.dataTable tbody td,
+.table tbody td {
+  background-color: var(--bg-surface) !important;
+  color: var(--text-muted) !important;
+  padding: 14px 20px !important;
+  border-bottom: 1px solid var(--border-color) !important;
+  border-top: none !important;
+}
+
+table.dataTable tbody tr:last-child td,
+.table tbody tr:last-child td {
+  border-bottom: none !important;
+}
+
+table.dataTable tbody tr:hover td,
+.table tbody tr:hover td {
+  background-color: var(--bg-surface-hover) !important;
+}
+
+/* Dropdown / Menus */
+.dropdown-menu {
+  background-color: var(--bg-surface) !important;
+  border: 1px solid var(--border-color) !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5) !important;
+  border-radius: var(--hspl-radius-md) !important;
+}
+
+.dropdown-menu>li>a {
+  color: var(--text-primary) !important;
+  padding: 10px 20px !important;
+}
+
+.dropdown-menu>li>a:hover {
+  background-color: var(--bg-surface-hover) !important;
+  color: var(--accent-primary) !important;
+}
+
+/* Navigation Links */
+.navigation a,
+.sidebar a {
+  color: var(--text-muted) !important;
+  font-weight: 500 !important;
+}
+
+.navigation a:hover,
+.sidebar a:hover {
+  color: var(--text-primary) !important;
+}
+
+/* Dashboard specific spacing fixes */
 .home-widgets-container {
   margin: -12px;
 }
@@ -184,109 +440,22 @@ body {
   padding: 12px;
 }
 
-/* 5. Data Tables Customization */
-table.dataTable {
-  border-collapse: collapse !important;
-  width: 100% !important;
-  color: var(--hspl-text-secondary);
-  border-radius: var(--hspl-radius-md);
-  overflow: hidden;
-  border: 1px solid var(--hspl-border-color) !important;
+/* Custom Scrollbar for Webkit */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
 }
 
-table.dataTable thead th,
-table.dataTable thead td {
-  padding: 14px 16px;
-  border-bottom: 2px solid var(--hspl-border-color) !important;
-  background-color: var(--hspl-bg-surface-hover);
-  color: var(--hspl-text-primary);
-  font-weight: 600;
-  text-transform: uppercase;
-  font-size: 0.85rem;
-  letter-spacing: 0.05em;
-  position: sticky;
-  top: 0;
-  z-index: 10;
+::-webkit-scrollbar-track {
+  background: var(--bg-body) !important;
 }
 
-table.dataTable tbody tr {
-  background-color: var(--hspl-bg-surface) !important;
-  border-bottom: 1px solid var(--hspl-border-color);
-  transition: background-color 0.15s ease;
+::-webkit-scrollbar-thumb {
+  background: var(--bg-surface-hover) !important;
+  border-radius: 5px;
+  border: 2px solid var(--bg-body);
 }
 
-table.dataTable tbody tr:hover {
-  background-color: var(--hspl-bg-surface-hover) !important;
-}
-
-table.dataTable tbody td {
-  padding: 14px 16px;
-  vertical-align: middle;
-}
-
-/* Pagination & Search Overrides */
-.dataTables_wrapper .dataTables_paginate .paginate_button {
-  border-radius: var(--hspl-radius-sm) !important;
-  border: 1px solid var(--hspl-border-color) !important;
-  background: var(--hspl-bg-surface) !important;
-  color: var(--hspl-text-secondary) !important;
-  transition: all 0.2s;
-}
-
-.dataTables_wrapper .dataTables_paginate .paginate_button.current,
-.dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
-  background: var(--hspl-primary-500) !important;
-  color: #fff !important;
-  border-color: var(--hspl-primary-600) !important;
-}
-
-.dataTables_wrapper .dataTables_filter input {
-  border: 1px solid var(--hspl-border-color);
-  border-radius: var(--hspl-radius-xl);
-  padding: 6px 16px;
-  background-color: var(--hspl-bg-surface);
-  color: var(--hspl-text-primary);
-  transition: border-color 0.2s, box-shadow 0.2s;
-}
-
-.dataTables_wrapper .dataTables_filter input:focus {
-  outline: none;
-  border-color: var(--hspl-primary-500);
-  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
-}
-
-/* 6. Form Inputs & Buttons */
-.form-control {
-  border-radius: var(--hspl-radius-md);
-  border: 1px solid var(--hspl-border-color);
-  background-color: var(--hspl-bg-surface);
-  color: var(--hspl-text-primary);
-  box-shadow: none;
-  transition: border-color 0.2s, box-shadow 0.2s;
-}
-
-.form-control:focus {
-  border-color: var(--hspl-primary-500);
-  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
-  background-color: var(--hspl-bg-surface);
-  color: var(--hspl-text-primary);
-}
-
-.btn {
-  border-radius: var(--hspl-radius-md);
-  font-weight: 500;
-  transition: all 0.2s ease;
-  letter-spacing: 0.02em;
-}
-
-.btn-primary {
-  background-color: var(--hspl-primary-500);
-  border-color: var(--hspl-primary-600);
-}
-
-.btn-primary:hover,
-.btn-primary:focus,
-.btn-primary:active {
-  background-color: var(--hspl-primary-600) !important;
-  border-color: var(--hspl-primary-700) !important;
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted) !important;
 }
