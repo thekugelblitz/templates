@@ -53,28 +53,37 @@
 <div id="overlay"></div>
     {$headeroutput}
 
-    <div class="navigation">
+    <!-- HSPL Modern SaaS Structure -->
+    <div class="hspl-topbar">
         {include file="$template/nav.tpl"}
     </div>
 
-    <div class="sidebar{if $minsidebar} minimized{/if}" id="sidebar">
-        <a href="#" class="sidebar-collapse-expand" id="sidebarCollapseExpand">
-            <i class="fa fa-chevron-down"></i>
-        </a>
-        <div class="sidebar-collapse">
-            {include file="$template/sidebar.tpl"}
-        </div>
-    </div>
-    <a href="#" class="sidebar-opener{if $minsidebar} minimized{/if}" id="sidebarOpener">
-        {$_ADMINLANG.openSidebar}
-    </a>
+    <div class="hspl-app-container">
+        
+        <aside class="hspl-sidebar{if $minsidebar} hspl-sidebar-minimized{/if}" id="sidebar">
+            <a href="#" class="sidebar-collapse-expand" id="sidebarCollapseExpand">
+                <i class="ph ph-caret-down"></i>
+            </a>
+            <div class="sidebar-collapse">
+                {include file="$template/sidebar.tpl"}
+            </div>
+            
+            <a href="#" class="sidebar-opener{if $minsidebar} minimized{/if}" id="sidebarOpener">
+                <i class="ph ph-list"></i> {$_ADMINLANG.openSidebar}
+            </a>
+        </aside>
 
-    <div class="{$contentAreaClasses}" id="contentarea">
-        <div class="alert global-admin-warning">
-            <i class="ph ph-info"></i>
+        <main class="hspl-content-area" id="contentarea">
+            {if !empty($globalAdminWarningMsg)}
+            <div class="hspl-alert hspl-alert-warning">
+                <i class="ph ph-warning-circle"></i>
                 {$globalAdminWarningMsg}
-        </div>
-        <div style="float:left;width:100%;">
-            {if !$isCustomHeader}
-                <h1{if $pagetitle == $_ADMINLANG.global.hometitle} class="pull-left"{/if}>{$pagetitle}</h1>
+            </div>
             {/if}
+            
+            <div class="hspl-page-content">
+                {if !$isCustomHeader}
+                    <div class="hspl-page-header">
+                        <h1>{$pagetitle}</h1>
+                    </div>
+                {/if}

@@ -1,7 +1,6 @@
-</div>
-<div class="clear"></div>
-</div>
-
+            </div> <!-- /.hspl-page-content -->
+        </main> <!-- /.hspl-content-area -->
+    </div> <!-- /.hspl-app-container -->
 <div class="footerbar">
     <div class="copyright">
         <!-- Removal of the WHMCS copyright notice is strictly prohibited -->

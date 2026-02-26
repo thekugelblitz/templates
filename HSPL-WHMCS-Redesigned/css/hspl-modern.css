@@ -315,24 +315,34 @@ table.dataTable thead th,
   font-size: 0.9rem;
 }
 
+.sidebar ul.hspl-sidebar-menu,
 .sidebar ul.menu,
 .sidebar>ul {
+  list-style: none !important;
   margin: 0 !important;
   padding: 0 12px 12px !important;
 }
 
+.sidebar ul.hspl-sidebar-menu li a,
 .sidebar ul.menu li a,
 .sidebar>ul li a {
+  display: flex !important;
+  align-items: center;
+  gap: 12px;
   color: var(--text-muted) !important;
-  padding: 8px 12px !important;
+  padding: 10px 14px !important;
   border-radius: var(--hspl-radius-md) !important;
   transition: background-color 0.2s, color 0.2s !important;
-  display: block !important;
   font-weight: 500 !important;
   border: none !important;
   background-image: none !important;
 }
 
+.sidebar ul.hspl-sidebar-menu li a i {
+  font-size: 1.2rem;
+}
+
+.sidebar ul.hspl-sidebar-menu li a:hover,
 .sidebar ul.menu li a:hover,
 .sidebar>ul li a:hover {
   background-color: var(--bg-surface-hover) !important;
@@ -458,4 +468,103 @@ table.dataTable tbody tr:hover td,
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--text-muted) !important;
+}
+
+/* 9. HSPL Structural Layout (The Grid) */
+body {
+  height: 100vh;
+  overflow: hidden;
+  display: flex !important;
+  flex-direction: column;
+}
+
+.hspl-topbar {
+  flex-shrink: 0;
+  z-index: 50;
+  background-color: var(--bg-surface) !important;
+  border-bottom: 1px solid var(--border-color) !important;
+}
+
+.hspl-app-container {
+  display: flex !important;
+  flex-grow: 1;
+  overflow: hidden;
+  background-color: var(--bg-body) !important;
+  width: 100vw;
+}
+
+.hspl-sidebar {
+  width: 260px;
+  flex-shrink: 0;
+  border-right: 1px solid var(--border-color) !important;
+  display: flex !important;
+  flex-direction: column;
+  height: 100%;
+  overflow-y: auto;
+  background-color: var(--bg-surface) !important;
+  transition: width 0.3s ease;
+}
+
+.hspl-sidebar.hspl-sidebar-minimized {
+  width: 80px;
+}
+
+.hspl-content-area {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding: 32px 48px !important;
+  background-color: var(--bg-body) !important;
+}
+
+/* 10. The SaaS Dashboard Grid */
+.hspl-dashboard-grid {
+  display: grid !important;
+  grid-template-columns: repeat(12, 1fr) !important;
+  gap: 24px !important;
+  margin-top: 24px !important;
+  /* Rip out Masonry styles that might linger */
+  height: auto !important;
+  position: relative !important;
+}
+
+.hspl-dashboard-grid .dashboard-panel-item {
+  width: 100% !important;
+  /* Override WHMCS masonry inline widths */
+  margin: 0 !important;
+  position: static !important;
+  /* Override Masonry absolute positioning */
+  grid-column: span 12;
+}
+
+/* Map Bootstrap column concepts to CSS Grid spans */
+@media (min-width: 1024px) {
+  .hspl-dashboard-grid .dashboard-panel-item-columns-3 {
+    grid-column: span 3 !important;
+  }
+
+  .hspl-dashboard-grid .dashboard-panel-item-columns-4 {
+    grid-column: span 4 !important;
+  }
+
+  .hspl-dashboard-grid .dashboard-panel-item-columns-6 {
+    grid-column: span 6 !important;
+  }
+
+  .hspl-dashboard-grid .dashboard-panel-item-columns-8 {
+    grid-column: span 8 !important;
+  }
+
+  .hspl-dashboard-grid .dashboard-panel-item-columns-12 {
+    grid-column: span 12 !important;
+  }
+}
+
+/* Hide native overlay */
+#overlay {
+  display: none !important;
+}
+
+/* Dashboard spacing reset */
+.home-widgets-container {
+  margin: 0 !important;
 }

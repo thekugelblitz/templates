@@ -59,8 +59,7 @@
     </div>
 {/foreach}
 
-<div class="home-widgets-container" data-masonry='{ "itemSelector": ".dashboard-panel-item", "columnWidth": ".dashboard-panel-sizer", "percentPosition": "true" }'>
-    <div class="dashboard-panel-sizer"></div>
+<div class="hspl-dashboard-grid">
 
     {foreach $sortableWidgets as $widget}
         <div id="panel{$widget->getId()}" data-widget="{$widget->getId()}" class="dashboard-panel-item dashboard-panel-item-columns-{$widget->getColumnSize()}{if in_array($widget->getId(), $hiddenWidgets)} hidden{/if}">

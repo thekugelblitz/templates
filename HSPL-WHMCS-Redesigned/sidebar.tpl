@@ -1,64 +1,54 @@
 {if $sidebar eq "home"}
     <div class="sidebar-header">
-        <i class="fas fa-star"></i>
+        <i class="ph ph-star"></i>
         {$_ADMINLANG.global.shortcuts}
     </div>
-    <ul>
+    <ul class="hspl-sidebar-menu">
         <li>
             <a href="clientsadd.php">
-                <img src="images/icons/clientsadd.png" class="absmiddle" width="16"
-                     height="16"/>
-
+                <i class="ph ph-user-plus"></i>
                 {$_ADMINLANG.clients.addnew}
             </a>
         </li>
         <li>
             <a href="ordersadd.php">
-                <img src="images/icons/ordersadd.png" class="absmiddle" width="16"
-                     height="16"/>
+                <i class="ph ph-shopping-cart"></i>
                 {$_ADMINLANG.orders.addnew}
             </a>
         </li>
         <li>
             <a href="quotes.php?action=manage">
-                <img src="images/icons/quotes.png" class="absmiddle" width="16"
-                     height="16"/>
+                <i class="ph ph-file-text"></i>
                 {$_ADMINLANG.quotes.createnew}
             </a>
         </li>
         <li>
             <a href="todolist.php">
-                <img src="images/icons/todolist.png" class="absmiddle" width="16"
-                     height="16"/> {$_ADMINLANG.utilities.todolistcreatenew}
+                <i class="ph ph-list-checks"></i> 
+                {$_ADMINLANG.utilities.todolistcreatenew}
             </a>
         </li>
         <li>
             <a href="supporttickets.php?action=open">
-                <img src="images/icons/tickets.png" class="absmiddle" width="16"
-                     height="16"/>
+                <i class="ph ph-ticket"></i>
                 {$_ADMINLANG.support.opennewticket}
             </a>
         </li>
         <li>
             <a href="whois.php">
-                <img src="images/icons/domains.png" class="absmiddle" width="16"
-                     height="16"/>
+                <i class="ph ph-magnifying-glass"></i>
                 {$_ADMINLANG.utilities.whois}
             </a>
         </li>
         <li>
             <a href="#" data-toggle="modal" data-target="#modalGenerateInvoices">
-                <img src="images/icons/invoices.png"
-                     class="absmiddle" width="16"
-                     height="16"/>
+                <i class="ph ph-receipt"></i>
                 {$_ADMINLANG.invoices.geninvoices}
             </a>
         </li>
         <li>
             <a href="#" data-toggle="modal" data-target="#modalCreditCardCapture">
-                <img src="images/icons/offlinecc.png"
-                     class="absmiddle" width="16"
-                     height="16"/>
+                <i class="ph ph-credit-card"></i>
                 {$_ADMINLANG.invoices.attemptcccaptures}
             </a>
         </li>
