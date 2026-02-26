@@ -1,40 +1,44 @@
 /* HSPL-WHMCS-Redesigned Premium CSS Overhaul 
-   Brings a deep, modern SaaS aesthetic (Linear, Vercel, Stripe style)
+   Brings a deep, modern SaaS aesthetic inspired by Arqion / Linear
 */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 :root {
-  /* High-end Dark Theme by Default */
-  --bg-body: #09090b;
-  /* Zinc 950 Deep */
-  --bg-surface: #18181b;
-  /* Zinc 900 Surfaces */
-  --bg-surface-hover: #27272a;
-  /* Zinc 800 */
-  --border-color: #27272a;
-  /* Soft border */
-  --border-subtle: #18181b;
+  /* High-end Dark Theme by Default from Reference */
+  --bg-body: #0d0f14;
+  /* Deep neutral/blue-black */
+  --bg-surface: #1c1e26;
+  /* Slightly lighter card base */
+  --bg-surface-hover: #21242d;
+  --border-color: #2d313d;
+  /* Thin subtle line */
+  --border-subtle: #1c1e26;
   --text-primary: #f8fafc;
-  --text-muted: #a1a1aa;
-  /* Zinc 400 */
+  --text-muted: #94a3b8;
+  /* Cool grey for labels */
 
   --accent-primary: #3b82f6;
+  /* Vibrant Blue */
   --accent-hover: #2563eb;
 
-  /* Status */
-  --status-success: #10b981;
-  --status-warning: #f59e0b;
-  --status-danger: #ef4444;
+  /* Status Colors */
+  --status-success: #bef264;
+  /* Neon Lime Green */
+  --status-warning: #fbbf24;
+  /* Soft Orange */
+  --status-danger: #fb7185;
+  /* Soft Red */
   --status-info: #3b82f6;
 
-  --hspl-radius-sm: 6px;
-  --hspl-radius-md: 10px;
-  --hspl-radius-lg: 16px;
-  --hspl-radius-xl: 20px;
+  /* Structure */
+  --hspl-radius-sm: 8px;
+  --hspl-radius-md: 12px;
+  --hspl-radius-lg: 20px;
+  --hspl-radius-xl: 24px;
 
   --hspl-font: 'Inter', -apple-system, sans-serif;
-  --shadow-panel: 0 4px 12px rgba(0, 0, 0, 0.5);
+  --shadow-panel: 0 10px 40px rgba(0, 0, 0, 0.4);
 }
 
 [data-theme="light"] {
@@ -44,7 +48,7 @@
   --border-color: #e2e8f0;
   --text-primary: #0f172a;
   --text-muted: #64748b;
-  --shadow-panel: 0 4px 12px rgba(0, 0, 0, 0.05);
+  --shadow-panel: 0 10px 40px rgba(0, 0, 0, 0.05);
 }
 
 /* 1. Global Reset & Overrides */
@@ -68,17 +72,28 @@ h6 {
   font-weight: 600 !important;
 }
 
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--text-primary) !important;
+  font-family: var(--hspl-font) !important;
+  font-weight: 600 !important;
+}
+
 /* 2. Top Navigation & Sidebar (Ultra Clean) */
 .header,
 .navigation {
-  background-color: var(--bg-body) !important;
-  border-bottom: 1px solid var(--border-color) !important;
-  box-shadow: none !important;
+  background-color: transparent !important;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .sidebar {
-  background-color: var(--bg-body) !important;
-  border-right: 1px solid var(--border-color) !important;
+  background-color: var(--bg-surface) !important;
+  border-right: 1px solid var(--border-color);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   box-shadow: none !important;
 }
 
@@ -134,29 +149,31 @@ h6 {
   color: var(--text-primary) !important;
   position: relative;
   overflow: hidden;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
 .health-status-block:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6) !important;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.6) !important;
   border-color: var(--text-muted) !important;
 }
 
 /* Colored top borders instead of full background fills */
 .health-status-block.stat-success {
-  border-top: 3px solid var(--status-success) !important;
+  border-top: 2px solid var(--status-success) !important;
 }
 
 .health-status-block.stat-danger {
-  border-top: 3px solid var(--status-danger) !important;
+  border-top: 2px solid var(--status-danger) !important;
 }
 
 .health-status-block.stat-warning {
-  border-top: 3px solid var(--status-warning) !important;
+  border-top: 2px solid var(--status-warning) !important;
 }
 
 .health-status-block.stat-info {
-  border-top: 3px solid var(--status-info) !important;
+  border-top: 2px solid var(--accent-primary) !important;
 }
 
 /* The numbers inside */
@@ -166,6 +183,7 @@ h6 {
   color: var(--text-primary) !important;
   margin-bottom: 8px !important;
   line-height: 1 !important;
+  letter-spacing: -1px;
 }
 
 /* The label inside */
@@ -186,12 +204,14 @@ h6 {
   border-radius: var(--hspl-radius-lg) !important;
   box-shadow: var(--shadow-panel) !important;
   margin-bottom: 24px !important;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
 .panel-heading,
 .hspl-panel-heading {
   background-color: transparent !important;
-  border-bottom: 1px dashed var(--border-color) !important;
+  border-bottom: 1px solid var(--border-color) !important;
   padding: 18px 24px !important;
   color: var(--text-primary) !important;
   font-weight: 600 !important;
@@ -202,10 +222,11 @@ h6 {
 }
 
 .panel-title {
-  font-size: 1rem !important;
+  font-size: 1.05rem !important;
   font-weight: 600 !important;
   color: var(--text-primary) !important;
   margin: 0 !important;
+  letter-spacing: -0.01em;
 }
 
 .panel-body,
@@ -276,6 +297,7 @@ table.dataTable,
   border-radius: var(--hspl-radius-md) !important;
   width: 100% !important;
   overflow: hidden !important;
+  background-color: transparent !important;
 }
 
 table.dataTable thead th,
@@ -283,10 +305,10 @@ table.dataTable thead th,
   background-color: var(--bg-surface-hover) !important;
   color: var(--text-primary) !important;
   font-weight: 500 !important;
-  font-size: 0.85rem !important;
+  font-size: 0.75rem !important;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  padding: 14px 20px !important;
+  padding: 16px 20px !important;
   border-bottom: 1px solid var(--border-color) !important;
   border-top: none !important;
 }
@@ -396,7 +418,7 @@ table.dataTable tbody td,
 .table tbody td {
   background-color: var(--bg-surface) !important;
   color: var(--text-muted) !important;
-  padding: 14px 20px !important;
+  padding: 18px 20px !important;
   border-bottom: 1px solid var(--border-color) !important;
   border-top: none !important;
 }
@@ -415,13 +437,17 @@ table.dataTable tbody tr:hover td,
 .dropdown-menu {
   background-color: var(--bg-surface) !important;
   border: 1px solid var(--border-color) !important;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5) !important;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4) !important;
   border-radius: var(--hspl-radius-md) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 8px !important;
 }
 
 .dropdown-menu>li>a {
   color: var(--text-primary) !important;
   padding: 10px 20px !important;
+  border-radius: var(--hspl-radius-sm) !important;
 }
 
 .dropdown-menu>li>a:hover {
