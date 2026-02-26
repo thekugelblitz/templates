@@ -54,13 +54,13 @@
     {$headeroutput}
 
     <!-- HSPL Modern SaaS Structure -->
-    <div class="hspl-topbar">
+    <div class="hspl-topbar navigation">
         {include file="$template/nav.tpl"}
     </div>
 
     <div class="hspl-app-container">
         
-        <aside class="hspl-sidebar{if $minsidebar} hspl-sidebar-minimized{/if}" id="sidebar">
+        <aside class="hspl-sidebar sidebar{if $minsidebar} hspl-sidebar-minimized minimized{/if}" id="sidebar">
             <a href="#" class="sidebar-collapse-expand" id="sidebarCollapseExpand">
                 <i class="ph ph-caret-down"></i>
             </a>
